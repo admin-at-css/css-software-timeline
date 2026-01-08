@@ -1,20 +1,20 @@
 [
   {
     "project": {
-      "id": "project-management-app",
-      "name": "Project Management App",
-      "description": "Internal project management tool for CSS team",
+      "id": "css-software-timeline",
+      "name": "CSS Software Timeline",
+      "description": "React-based dashboard for tracking software projects within the CSS team. Features Gantt charts, project cards, filtering, and multi-view dashboard.",
       "status": "in_progress",
-      "startDate": "2024-12-01",
-      "endDate": "2025-03-15",
-      "estimatedHours": 240,
-      "actualHours": 85,
+      "startDate": "2025-12-05",
+      "endDate": "2026-01-31",
+      "estimatedHours": 112,
+      "actualHours": 78,
       "priority": "high",
-      "priorityReason": "Needed for Q1 2025 team expansion",
+      "priorityReason": "Internal tool needed to track all CSS team projects and improve visibility",
       "stakeholders": [
         {
           "name": "Kevin Zakaria",
-          "role": "Product Owner"
+          "role": "Developer & Product Owner"
         },
         {
           "name": "CSS Team",
@@ -22,153 +22,373 @@
         }
       ],
       "repository": {
-        "url": "https://github.com/admin-at-css/project-management-app",
+        "url": "https://github.com/admin-at-css/css-software-timeline",
         "branch": "main"
       },
-      "color": "#3498db"
+      "color": "#3b82f6"
     },
     "tasks": [
       {
-        "id": "planning",
-        "name": "Requirements & Planning",
-        "startDate": "2024-12-01",
-        "endDate": "2024-12-15",
-        "estimatedHours": 20,
-        "actualHours": 18,
+        "id": "phase-1-foundation",
+        "name": "Phase 1: Foundation & MVP",
+        "description": "Initial project setup and core functionality:\n- React 19 + Vite 7 + TypeScript + Tailwind CSS v4 setup\n- Core components: GanttChart, FilterBar, ProjectList, ProjectCard\n- Dashboard architecture: DashboardView, SummaryStats, ViewToggle\n- Project view with tabs: Details, Gantt, Tasks, Activity\n- frappe-gantt integration and CSS conflict resolution\n",
+        "startDate": "2025-12-06",
+        "endDate": "2025-12-15",
+        "estimatedHours": 32,
+        "actualHours": 32,
         "status": "completed",
         "progress": 100,
-        "dependencies": []
+        "dependencies": [],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
       },
       {
-        "id": "design",
-        "name": "UI/UX Design",
-        "startDate": "2024-12-10",
-        "endDate": "2024-12-31",
-        "estimatedHours": 40,
-        "actualHours": 35,
+        "id": "milestone-mvp",
+        "name": "MVP Complete",
+        "description": "Functional dashboard with Gantt charts, filtering, and project views",
+        "startDate": "2025-12-15",
+        "endDate": "2025-12-15",
+        "estimatedHours": 0,
+        "actualHours": 0,
         "status": "completed",
         "progress": 100,
         "dependencies": [
-          "planning"
-        ]
+          "phase-1-foundation"
+        ],
+        "type": "milestone"
       },
       {
-        "id": "backend-api",
-        "name": "Backend API Development",
-        "startDate": "2025-01-01",
-        "endDate": "2025-02-15",
-        "estimatedHours": 80,
-        "status": "in_progress",
-        "progress": 45,
+        "id": "phase-2-data",
+        "name": "Phase 2: Data Architecture",
+        "description": "YAML-based project data management:\n- YAML schema design with comprehensive documentation\n- Import modal with drag & drop file upload\n- Parser integration with validation & error handling\n- TypeScript types for Project, Task, Stakeholder entities\n",
+        "startDate": "2025-12-16",
+        "endDate": "2025-12-20",
+        "estimatedHours": 12,
+        "actualHours": 12,
+        "status": "completed",
+        "progress": 100,
         "dependencies": [
-          "design"
-        ]
+          "milestone-mvp"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
       },
       {
-        "id": "frontend",
-        "name": "Frontend Development",
-        "startDate": "2025-01-15",
-        "endDate": "2025-03-01",
-        "estimatedHours": 80,
-        "status": "in_progress",
-        "progress": 20,
+        "id": "milestone-yaml",
+        "name": "YAML Data Source Complete",
+        "description": "Full YAML import workflow with validation",
+        "startDate": "2025-12-20",
+        "endDate": "2025-12-20",
+        "estimatedHours": 0,
+        "actualHours": 0,
+        "status": "completed",
+        "progress": 100,
         "dependencies": [
-          "design",
-          "backend-api"
-        ]
+          "phase-2-data"
+        ],
+        "type": "milestone"
+      },
+      {
+        "id": "phase-2-5-ux",
+        "name": "Phase 2.5: UX Enhancements",
+        "description": "User experience improvements:\n- Enhanced Gantt popup with rich metadata display\n- LocalStorage persistence for imported projects\n- Update existing projects confirmation dialog\n- CLAUDE.md documentation and workflow instructions\n",
+        "startDate": "2025-12-21",
+        "endDate": "2025-12-23",
+        "estimatedHours": 8,
+        "actualHours": 8,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": [
+          "milestone-yaml"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
+      },
+      {
+        "id": "milestone-enhanced",
+        "name": "Enhanced Import Complete",
+        "description": "Full import workflow with persistence, updates, and documentation",
+        "startDate": "2025-12-23",
+        "endDate": "2025-12-23",
+        "estimatedHours": 0,
+        "actualHours": 0,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": [
+          "phase-2-5-ux"
+        ],
+        "type": "milestone"
+      },
+      {
+        "id": "phase-3-gantt",
+        "name": "Phase 3: Gantt Improvements",
+        "description": "Gantt chart UX overhaul:\n- Replace floating popup with right-side TaskDetailsPanel\n- Slide-in panel animation (300ms transition)\n- 70:30 layout ratio for panel content\n- Subtasks parsing with status-aware icons\n- ProjectSummaryFooter with metrics and upcoming milestones\n- Remove redundant project name prefix from task labels\n- InlineLegend component in header\n",
+        "startDate": "2025-12-24",
+        "endDate": "2025-12-31",
+        "estimatedHours": 16,
+        "actualHours": 16,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": [
+          "milestone-enhanced"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
+      },
+      {
+        "id": "milestone-gantt-ux",
+        "name": "Gantt UX Complete",
+        "description": "Professional-grade Gantt interface with side panel and summary footer",
+        "startDate": "2025-12-31",
+        "endDate": "2025-12-31",
+        "estimatedHours": 0,
+        "actualHours": 0,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": [
+          "phase-3-gantt"
+        ],
+        "type": "milestone"
+      },
+      {
+        "id": "phase-4-polish",
+        "name": "Phase 4: Version Control & Polish",
+        "description": "Production readiness:\n- Git repository initialization and commit history\n- Inline editing of project metadata\n- Inline editing of task data (status, progress, hours)\n- Export improvements (better PDF formatting)\n- CSV export functionality\n",
+        "startDate": "2026-01-02",
+        "endDate": "2026-01-15",
+        "estimatedHours": 28,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": [
+          "milestone-gantt-ux"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
+      },
+      {
+        "id": "milestone-v1",
+        "name": "v1.0 Release",
+        "description": "First stable release with full CRUD and export functionality",
+        "startDate": "2026-01-15",
+        "endDate": "2026-01-15",
+        "estimatedHours": 0,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": [
+          "phase-4-polish"
+        ],
+        "type": "milestone"
+      },
+      {
+        "id": "phase-5-future",
+        "name": "Phase 5: Future Enhancements",
+        "description": "Nice-to-have features:\n- File watcher for auto-detecting timeline.yaml changes\n- Dark mode support with theme toggle\n- Keyboard shortcuts for common actions\n",
+        "startDate": "2026-01-16",
+        "endDate": "2026-01-31",
+        "estimatedHours": 16,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": [
+          "milestone-v1"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
       }
     ],
     "monthlyAllocation": {
-      "2024-12": 40,
-      "2025-01": 60,
-      "2025-02": 80,
-      "2025-03": 60
-    }
-  },
-  {
-    "project": {
-      "id": "pakeaja-design-docs",
-      "name": "Pakeaja Design Docs",
-      "description": "Design documentation for Pakeaja platform",
-      "status": "planning",
-      "startDate": "2025-01-15",
-      "endDate": "2025-02-28",
-      "estimatedHours": 80,
-      "actualHours": 0,
-      "priority": "medium",
-      "priorityReason": "Foundation for Q2 development",
-      "stakeholders": [
-        {
-          "name": "Kevin Zakaria",
-          "role": "Lead Designer"
-        }
-      ],
-      "repository": {
-        "url": "https://github.com/admin-at-css/pakeaja-design-docs",
-        "branch": "main"
-      },
-      "color": "#9b59b6"
+      "2025-12": 68,
+      "2026-01": 44
     },
-    "tasks": [
+    "backlog": [
       {
-        "id": "research",
-        "name": "User Research",
-        "startDate": "2025-01-15",
-        "endDate": "2025-01-31",
-        "estimatedHours": 30,
-        "status": "pending",
-        "progress": 0,
-        "dependencies": []
+        "id": "visual-timeline-panel",
+        "name": "Visual Timeline Context Panel",
+        "description": "Show mini project timeline in the task details panel, highlighting\nwhere the selected task fits in the overall project context.\n",
+        "priority": "medium",
+        "estimatedHours": 8,
+        "status": "approved",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2025-12-30"
       },
       {
-        "id": "wireframes",
-        "name": "Wireframe Design",
-        "startDate": "2025-02-01",
-        "endDate": "2025-02-15",
-        "estimatedHours": 30,
-        "status": "pending",
-        "progress": 0,
-        "dependencies": [
-          "research"
+        "id": "drag-drop-gantt",
+        "name": "Drag & Drop Task Rescheduling",
+        "description": "Allow users to drag task bars on the Gantt chart to reschedule",
+        "priority": "low",
+        "estimatedHours": 16,
+        "status": "idea",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2025-12-30"
+      },
+      {
+        "id": "multi-assignee",
+        "name": "Multiple Assignees per Task",
+        "description": "Support assigning multiple people to a single task",
+        "priority": "low",
+        "estimatedHours": 6,
+        "status": "idea",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2025-12-30"
+      },
+      {
+        "id": "notifications",
+        "name": "Due Date Notifications",
+        "description": "Browser notifications for upcoming deadlines and overdue tasks",
+        "priority": "low",
+        "estimatedHours": 8,
+        "status": "idea",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2025-12-30"
+      },
+      {
+        "id": "github-integration",
+        "name": "GitHub Issues Integration",
+        "description": "Sync tasks with GitHub issues for two-way updates",
+        "priority": "medium",
+        "estimatedHours": 24,
+        "status": "idea",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2025-12-31"
+      },
+      {
+        "id": "quick-stats-cards",
+        "name": "Quick Stats Cards",
+        "description": "Add summary stat cards at top of DetailsTab showing:\n- Total tasks count\n- Completed tasks (with percentage)\n- In Progress tasks (with percentage)\n- Blocked/Pending tasks (with percentage)\nVisual cards with icons, similar to Monday.com and ClickUp dashboards.\n",
+        "priority": "high",
+        "estimatedHours": 4,
+        "actualHours": 2,
+        "status": "completed",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08",
+        "dateCompleted": "2026-01-08",
+        "benchmarkedFrom": [
+          "Monday",
+          "ClickUp",
+          "Asana",
+          "Linear"
         ]
       },
       {
-        "id": "documentation",
-        "name": "Final Documentation",
-        "startDate": "2025-02-15",
-        "endDate": "2025-02-28",
-        "estimatedHours": 20,
-        "status": "pending",
-        "progress": 0,
-        "dependencies": [
-          "wireframes"
+        "id": "project-health-indicator",
+        "name": "Project Health Indicator",
+        "description": "Auto-calculated health status displayed as badge:\n- 🟢 On Track: schedule variance < 10%, budget variance < 10%\n- 🟡 At Risk: schedule or budget variance 10-25%\n- 🔴 Off Track: schedule or budget variance > 25%\nCalculate based on: (actual progress vs expected progress) and (actual hours vs estimated hours).\n",
+        "priority": "high",
+        "estimatedHours": 6,
+        "actualHours": 2,
+        "status": "completed",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08",
+        "dateCompleted": "2026-01-08",
+        "benchmarkedFrom": [
+          "Monday",
+          "ClickUp",
+          "Linear"
+        ]
+      },
+      {
+        "id": "mini-timeline-visualization",
+        "name": "Mini Timeline with 'You Are Here'",
+        "description": "Compact horizontal timeline bar showing:\n- Project start to end range\n- Current date marker (\"You are here\") with floating date label\n- Milestone markers (purple diamonds)\n- Day X of Y indicator (e.g., \"Day 34 of 57\")\nSimilar to Linear's project progress visualization.\n",
+        "priority": "high",
+        "estimatedHours": 6,
+        "actualHours": 3,
+        "status": "completed",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08",
+        "dateCompleted": "2026-01-08",
+        "benchmarkedFrom": [
+          "Linear",
+          "Asana"
+        ]
+      },
+      {
+        "id": "velocity-metrics",
+        "name": "Velocity & Burn Rate Metrics",
+        "description": "Calculate and display project velocity:\n- Hours burned per week (average)\n- Tasks completed per week\n- Projected completion date based on current velocity\n- Budget forecast (on budget / over budget / under budget)\n",
+        "priority": "medium",
+        "estimatedHours": 8,
+        "status": "approved",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08",
+        "benchmarkedFrom": [
+          "ClickUp",
+          "Monday",
+          "Asana"
+        ]
+      },
+      {
+        "id": "completion-forecast",
+        "name": "Completion Forecast",
+        "description": "Predictive completion date based on velocity:\n- \"At current pace, project will finish: [date]\"\n- Risk indicator if forecast exceeds deadline\n- Days ahead/behind schedule indicator\n- Velocity (hours/day), remaining hours, progress metrics\n- Confidence indicator (high/medium/low)\n",
+        "priority": "medium",
+        "estimatedHours": 4,
+        "actualHours": 2,
+        "status": "completed",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08",
+        "dateCompleted": "2026-01-08",
+        "benchmarkedFrom": [
+          "Monday",
+          "ClickUp"
+        ]
+      },
+      {
+        "id": "inline-recent-activity",
+        "name": "Inline Recent Activity Feed",
+        "description": "Show last 3-5 activities directly on DetailsTab (not separate tab):\n- Task completions with dates\n- Milestone achievements\n- Status changes\nCompact format, expandable to full Activity tab.\n",
+        "priority": "medium",
+        "estimatedHours": 4,
+        "status": "approved",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08",
+        "benchmarkedFrom": [
+          "Linear",
+          "Asana",
+          "Notion"
+        ]
+      },
+      {
+        "id": "upcoming-milestones-preview",
+        "name": "Upcoming Milestones Preview",
+        "description": "Show next 2-3 upcoming milestones on DetailsTab:\n- Milestone name and target date\n- Days until milestone (with countdown: \"Tomorrow\", \"3 days\", \"~2 weeks\")\n- Dependency status (ready / blocked) with \"Waiting on: [tasks]\" indicator\n- Color-coded urgency (red overdue, amber ≤7 days, gray normal)\n",
+        "priority": "medium",
+        "estimatedHours": 3,
+        "actualHours": 1,
+        "status": "completed",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08",
+        "dateCompleted": "2026-01-08",
+        "benchmarkedFrom": [
+          "Linear",
+          "Asana",
+          "Monday"
         ]
       }
     ],
-    "monthlyAllocation": {
-      "2025-01": 30,
-      "2025-02": 50
+    "metadata": {
+      "lastUpdated": "2026-01-08T14:35:00Z",
+      "schemaVersion": "1.0.0"
     }
   },
   {
     "project": {
       "id": "css-chrome-extension",
-      "name": "CSS Chrome Extension",
-      "description": "Browser extension for CSS team productivity",
+      "name": "CSS Toolkit",
+      "description": "Chrome extension productivity tools for Kledo CRM - PT Cepat Service Station.\nFeatures: Referensi Generator (reference codes), Alamat Pengiriman (shipping addresses),\nGoogle Sheets sync, and Deletion Audit System (document recovery).\n",
       "status": "in_progress",
-      "startDate": "2024-11-15",
-      "endDate": "2025-01-31",
-      "estimatedHours": 120,
-      "actualHours": 70,
+      "startDate": "2025-11-09",
+      "endDate": "2026-01-31",
+      "estimatedHours": 160,
+      "actualHours": 130,
       "priority": "high",
-      "priorityReason": "Immediate productivity boost needed",
+      "priorityReason": "Active daily use by CSS team, increases productivity, critical for operations, new deletion recovery capability requested by users",
       "stakeholders": [
         {
           "name": "Kevin Zakaria",
           "role": "Developer"
         },
         {
-          "name": "Sales Team",
+          "name": "PT Cepat Service Station",
           "role": "End Users"
         }
       ],
@@ -176,50 +396,194 @@
         "url": "https://github.com/efacsen/css-chrome-extension",
         "branch": "main"
       },
-      "color": "#e74c3c"
+      "color": "#2f5f91"
     },
     "tasks": [
       {
-        "id": "manifest",
-        "name": "Extension Setup",
-        "startDate": "2024-11-15",
-        "endDate": "2024-11-30",
-        "estimatedHours": 20,
-        "actualHours": 18,
+        "id": "phase-1-core",
+        "name": "Phase 1: Core Extension (v1.0-v2.0)",
+        "description": "Initial extension development:\n- Referensi Generator with auto-increment codes\n- Alamat Pengiriman (shipping address manager)\n- Floating button UI on Kledo pages\n- Content script architecture (Manifest V3)\n- Panel system with drag & drop\n",
+        "startDate": "2025-11-09",
+        "endDate": "2025-11-09",
+        "estimatedHours": 40,
+        "actualHours": 40,
         "status": "completed",
         "progress": 100,
-        "dependencies": []
+        "dependencies": [],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
       },
       {
-        "id": "core-features",
-        "name": "Core Features",
-        "startDate": "2024-12-01",
-        "endDate": "2025-01-15",
-        "estimatedHours": 60,
-        "actualHours": 52,
-        "status": "in_progress",
-        "progress": 80,
+        "id": "milestone-v2",
+        "name": "v2.0 Released",
+        "description": "Major redesign shipped - floating panels, content scripts",
+        "startDate": "2025-11-09",
+        "endDate": "2025-11-09",
+        "estimatedHours": 0,
+        "status": "completed",
+        "progress": 100,
         "dependencies": [
-          "manifest"
-        ]
+          "phase-1-core"
+        ],
+        "type": "milestone"
       },
       {
-        "id": "polish",
-        "name": "Polish & Testing",
-        "startDate": "2025-01-15",
-        "endDate": "2025-01-31",
-        "estimatedHours": 40,
+        "id": "phase-2-sync",
+        "name": "Phase 2: Google Sheets Sync (v2.1-v2.3)",
+        "description": "Cloud sync and data management:\n- Google Sheets integration with Apps Script backend\n- OAuth 2.0 authentication\n- Automatic background sync\n- Export/Import backup feature\n- Auto-update via GitHub Pages\n- Rebranding to CSS Toolkit\n",
+        "startDate": "2025-11-10",
+        "endDate": "2025-11-10",
+        "estimatedHours": 30,
+        "actualHours": 30,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": [
+          "milestone-v2"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
+      },
+      {
+        "id": "milestone-v2.3",
+        "name": "v2.3.4 Released",
+        "description": "Google Sync + CSS Toolkit rebrand shipped to production",
+        "startDate": "2025-11-10",
+        "endDate": "2025-11-10",
+        "estimatedHours": 0,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": [
+          "phase-2-sync"
+        ],
+        "type": "milestone"
+      },
+      {
+        "id": "phase-3-audit",
+        "name": "Phase 3: Deletion Audit System (v3.0)",
+        "description": "Document recovery and audit system:\n- Intercept document deletions in Kledo\n- Audit logging to Google Sheets\n- Recovery Panel UI with table/detail views\n- Invoice Suggestion Widgets (SI, PI, DO, PD)\n- Form auto-fill helpers\n- Resizable panels\n- Keyboard shortcuts (Alt-based)\n- Contact hyperlinks\nBranch: feature/deletion-audit-system-v2.3.0 (202 commits, +20K LOC)\n",
+        "startDate": "2025-11-11",
+        "endDate": "2026-01-24",
+        "estimatedHours": 70,
+        "actualHours": 60,
+        "status": "in_progress",
+        "progress": 85,
+        "dependencies": [
+          "milestone-v2.3"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
+      },
+      {
+        "id": "phase-4-release",
+        "name": "Phase 4: Polish & Release",
+        "description": "Final preparation for v3.0 release:\n- Testing and bug fixes\n- Documentation updates\n- Merge feature branch to main\n- Production deployment\n",
+        "startDate": "2026-01-25",
+        "endDate": "2026-01-31",
+        "estimatedHours": 20,
+        "actualHours": 0,
         "status": "pending",
         "progress": 0,
         "dependencies": [
-          "core-features"
-        ]
+          "phase-3-audit"
+        ],
+        "assignee": "Kevin Zakaria",
+        "type": "task"
+      },
+      {
+        "id": "milestone-v3",
+        "name": "v3.0 Released",
+        "description": "Deletion Audit System shipped to production",
+        "startDate": "2026-01-31",
+        "endDate": "2026-01-31",
+        "estimatedHours": 0,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": [
+          "phase-4-release"
+        ],
+        "type": "milestone"
       }
     ],
     "monthlyAllocation": {
-      "2024-11": 20,
-      "2024-12": 40,
-      "2025-01": 60
-    }
+      "2025-11": 100,
+      "2025-12": 30,
+      "2026-01": 30
+    },
+    "metadata": {
+      "lastUpdated": "2026-01-08T20:00:00Z",
+      "schemaVersion": "1.0.0"
+    },
+    "backlog": [
+      {
+        "id": "export-import-lists",
+        "name": "Export/Import Project & Address Lists",
+        "description": "Allow users to export and import their project/address libraries as files",
+        "priority": "medium",
+        "estimatedHours": 8,
+        "status": "idea",
+        "requestedBy": "Planned Features",
+        "dateAdded": "2025-11-09"
+      },
+      {
+        "id": "bulk-reference",
+        "name": "Bulk Reference Generation",
+        "description": "Generate multiple references at once for batch operations",
+        "priority": "low",
+        "estimatedHours": 12,
+        "status": "idea",
+        "requestedBy": "Planned Features",
+        "dateAdded": "2025-11-09"
+      },
+      {
+        "id": "crm-integration",
+        "name": "Deeper Kledo CRM Integration",
+        "description": "Direct API integration with Kledo for enhanced automation",
+        "priority": "medium",
+        "estimatedHours": 24,
+        "status": "idea",
+        "requestedBy": "Planned Features",
+        "dateAdded": "2025-11-09"
+      },
+      {
+        "id": "project-templates",
+        "name": "Project Templates",
+        "description": "Pre-defined templates for common project types",
+        "priority": "low",
+        "estimatedHours": 8,
+        "status": "idea",
+        "requestedBy": "Planned Features",
+        "dateAdded": "2025-11-09"
+      },
+      {
+        "id": "custom-format",
+        "name": "Custom Reference Format Options",
+        "description": "Allow users to customize reference code format",
+        "priority": "low",
+        "estimatedHours": 12,
+        "status": "idea",
+        "requestedBy": "Planned Features",
+        "dateAdded": "2025-11-09"
+      },
+      {
+        "id": "team-sync",
+        "name": "Team Synchronization",
+        "description": "Cloud-based sync for team sharing of references and addresses",
+        "priority": "medium",
+        "estimatedHours": 32,
+        "status": "idea",
+        "requestedBy": "Planned Features",
+        "dateAdded": "2025-11-09"
+      },
+      {
+        "id": "analytics-dashboard",
+        "name": "Analytics Dashboard",
+        "description": "Usage patterns, most-used projects, productivity metrics",
+        "priority": "low",
+        "estimatedHours": 20,
+        "status": "idea",
+        "requestedBy": "Planned Features",
+        "dateAdded": "2025-11-09"
+      }
+    ]
   }
 ]

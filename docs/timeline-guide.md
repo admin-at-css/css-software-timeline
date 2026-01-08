@@ -4,7 +4,7 @@ This guide explains how to create and maintain `timeline.yaml` files for CSS pro
 
 ## Quick Start
 
-1. **Copy a template** from `templates/` to your project root as `timeline.yaml`
+1. **Copy the `timeline-templates/` folder** to your project, then use Claude Code to generate `timeline.yaml`
    - Use `timeline-minimal.yaml` for idea/planning phase projects
    - Use `timeline-full.yaml` for active development projects
 

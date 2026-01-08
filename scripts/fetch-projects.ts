@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { load } from 'js-yaml';
 import { REPOS, YAML_FILENAME, type RepoConfig } from './config.js';
