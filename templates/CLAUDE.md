@@ -74,8 +74,52 @@ After exploring, you should ONLY need to ask:
 1. **Priority level** - `critical` | `high` | `medium` | `low`
 2. **Priority reason** - Why this priority? (for stakeholders)
 3. **Target end date** - When should this ship? (if not already deployed)
-4. **Actual hours spent** - Only the user knows this
+4. **Actual hours spent** - Offer estimation OR manual input (see below)
 5. **Corrections** - "I found X, Y, Z - is this accurate?"
+
+### Handling Actual Hours (Interactive)
+
+**Don't just ask "how many hours?"** - the user may not know. Instead, offer two options:
+
+> **For actual hours spent, would you like me to:**
+>
+> **A) Estimate using industry best practices** - I'll calculate based on:
+>    - Project complexity and codebase size
+>    - Days with git commits × average focus hours
+>    - Standard ratios for solo development work
+>
+> **B) Enter manually** - You provide the actual number
+>
+> Note: Hours include ALL work, not just coding:
+> - Brainstorming & ideation
+> - Research & learning
+> - Planning & design
+> - Coding & implementation
+> - Testing & debugging
+> - Documentation
+
+**If user chooses Option A (Estimate), use this formula:**
+
+```
+Actual Hours = (Days with commits × Hours per active day) + Non-coding multiplier
+
+Where:
+- Days with commits = git log --format="%ad" --date=short | sort | uniq | wc -l
+- Hours per active day = 3-4 hours (realistic for solo dev with other responsibilities)
+- Non-coding multiplier = 1.5x (accounts for thinking, research, planning)
+
+Example:
+- 20 days with commits
+- 3.5 hours average per day
+- 1.5x multiplier for non-coding work
+- Actual hours = 20 × 3.5 × 1.5 = 105 hours
+```
+
+**Additional estimation factors:**
+- If project has complex integrations: add 20%
+- If project required learning new tech: add 30%
+- If project has documentation: add 10%
+- If project started from scratch (no boilerplate): add 25%
 
 **Example prompt after exploration:**
 
@@ -85,7 +129,7 @@ After exploring, you should ONLY need to ask:
 > - **Description**: Browser extension for CSS team productivity
 > - **Started**: November 15, 2024 (first commit)
 > - **Status**: In progress (~70% complete based on code)
-> - **Estimated hours**: ~80 hours (based on codebase size)
+> - **Estimated total hours**: ~80 hours (based on codebase size)
 >
 > **Tasks I identified:**
 > 1. Extension Setup (completed - manifest.json exists, basic structure done)
@@ -93,10 +137,16 @@ After exploring, you should ONLY need to ask:
 > 3. Polish & Testing (pending - no tests yet)
 >
 > **I need from you:**
-> 1. What's the priority level? (critical/high/medium/low)
-> 2. Why this priority? (one sentence for stakeholders)
-> 3. Target completion date?
-> 4. How many actual hours have you spent so far?
+>
+> 1. **Priority level?** (critical/high/medium/low)
+>
+> 2. **Why this priority?** (one sentence for stakeholders)
+>
+> 3. **Target completion date?**
+>
+> 4. **Actual hours spent so far:**
+>    - **Option A**: I estimate ~52 hours based on 15 active days × 3.5 hrs × 1.0 (chrome extension is familiar tech). Want me to use this?
+>    - **Option B**: Enter your own number
 
 ## Step 4: Create timeline.yaml
 
