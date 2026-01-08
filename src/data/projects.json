@@ -363,10 +363,20 @@
           "Asana",
           "Monday"
         ]
+      },
+      {
+        "id": "fetch-button",
+        "name": "Manual Fetch/Refresh Button",
+        "description": "Add a button in the UI to manually trigger fetching updated timeline data:\n- Button in header or dashboard view\n- Calls the fetch script to pull latest data from all configured repos\n- Shows loading state during fetch\n- Displays success/error notification after completion\n- Updates dashboard without page reload\n",
+        "priority": "medium",
+        "estimatedHours": 6,
+        "status": "idea",
+        "requestedBy": "Kevin Zakaria",
+        "dateAdded": "2026-01-08"
       }
     ],
     "metadata": {
-      "lastUpdated": "2026-01-08T14:35:00Z",
+      "lastUpdated": "2026-01-08T21:50:00Z",
       "schemaVersion": "1.0.0"
     }
   },
