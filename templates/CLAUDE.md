@@ -6,70 +6,102 @@
 *No recent activity*
 </claude-mem-context>
 
-# Instructions for Claude Code
+# Instructions for Claude Code: Creating timeline.yaml
 
-When asked to create a `timeline.yaml` file for this project, follow these steps:
+When asked to create a `timeline.yaml` file for this project, **DO NOT immediately ask the user questions**. You have access to the entire codebase - use it!
 
-## 1. Choose the Right Template
+## Step 1: Explore the Codebase First
 
-- **Use `timeline-minimal.yaml`** if the project is:
-  - An idea or concept
-  - In planning phase
-  - Early stage with unclear scope
+Before asking anything, gather information from:
 
-- **Use `timeline-full.yaml`** if the project is:
-  - In active development
-  - Has clear phases or milestones
-  - Needs detailed hour tracking
+1. **README.md** - Project name, description, purpose
+2. **package.json / Cargo.toml / etc.** - Project metadata, dependencies, scripts
+3. **Git history** - Run these commands:
+   ```bash
+   git log --oneline --reverse | head -1   # First commit = approximate start date
+   git log --oneline | head -10            # Recent activity
+   git log --format="%ad" --date=short | sort | uniq | wc -l  # Days with commits
+   ```
+4. **Source code structure** - Identify major features/modules
+5. **Existing documentation** - Any specs, design docs, or notes
 
-## 2. Gather Project Information
+## Step 2: Infer What You Can
 
-Before creating the file, ask the user for:
+From your exploration, determine:
 
-1. **Project basics:**
-   - Project name (human-readable)
-   - Brief description (what problem does it solve?)
-   - Current status: `draft` | `planning` | `in_progress` | `on_hold` | `completed`
-   - Priority: `critical` | `high` | `medium` | `low`
-   - Why this priority? (for stakeholders)
+| Field | How to Infer |
+|-------|--------------|
+| `id` | Repository/folder name, lowercase with dashes |
+| `name` | From README title or package.json name |
+| `description` | From README or package.json description |
+| `status` | From code completeness: has tests? deployed? README says "WIP"? |
+| `startDate` | First git commit date |
+| `repository.url` | From `git remote -v` |
+| `tasks` | From code structure: setup, core features, UI, tests, etc. |
 
-2. **Timeline:**
-   - Start date (when work began or will begin)
-   - End date (target completion, if known)
+**Estimate hours based on codebase size:**
+- Small project (<1000 LOC): 20-40 hours
+- Medium project (1000-5000 LOC): 40-100 hours
+- Large project (5000+ LOC): 100+ hours
 
-3. **Hours:**
-   - Estimated total hours for the project
-   - Actual hours spent so far
+**Estimate task progress based on:**
+- Feature has tests = likely complete
+- Feature has TODO comments = in progress
+- Feature folder exists but empty/minimal = pending
 
-4. **Tasks/Phases:**
-   - What are the major chunks of work?
-   - For each task: name, start date, end date, estimated hours, status, progress %
-   - Any milestones? (key checkpoints)
+## Step 3: Only Ask What You Cannot Determine
 
-5. **Repository:**
-   - GitHub URL
-   - Which branch? (usually `main`)
+After exploring, you should ONLY need to ask:
 
-## 3. Create timeline.yaml
+1. **Priority level** - `critical` | `high` | `medium` | `low`
+2. **Priority reason** - Why this priority? (for stakeholders)
+3. **Target end date** - When should this ship? (if not already deployed)
+4. **Actual hours spent** - Only the user knows this
+5. **Corrections** - "I found X, Y, Z - is this accurate?"
 
-1. Copy the appropriate template to the project root as `timeline.yaml`
-2. Replace all placeholder values with actual project data
-3. Generate a unique `id` (lowercase, dashes, e.g., `css-chrome-extension`)
-4. Set `metadata.lastUpdated` to current ISO timestamp
-5. Ensure all dates use `YYYY-MM-DD` format
+**Example prompt after exploration:**
 
-## 4. Validate the File
+> I've analyzed the codebase and here's what I found:
+>
+> - **Project**: CSS Chrome Extension
+> - **Description**: Browser extension for CSS team productivity
+> - **Started**: November 15, 2024 (first commit)
+> - **Status**: In progress (~70% complete based on code)
+> - **Estimated hours**: ~80 hours (based on codebase size)
+>
+> **Tasks I identified:**
+> 1. Extension Setup (completed - manifest.json exists, basic structure done)
+> 2. Core Features (in progress - popup and content scripts partially implemented)
+> 3. Polish & Testing (pending - no tests yet)
+>
+> **I need from you:**
+> 1. What's the priority level? (critical/high/medium/low)
+> 2. Why this priority? (one sentence for stakeholders)
+> 3. Target completion date?
+> 4. How many actual hours have you spent so far?
+
+## Step 4: Create timeline.yaml
+
+Choose the appropriate template:
+- **`timeline-minimal.yaml`** - For idea/planning phase projects
+- **`timeline-full.yaml`** - For active development with clear phases
+
+Create `timeline.yaml` in the project root with:
+- All inferred values filled in
+- User-provided values for priority, hours, dates
+- `metadata.lastUpdated` set to current ISO timestamp
+
+## Step 5: Validate
 
 Check that:
-- [ ] All required fields are present (see template comments)
-- [ ] Dates are in YYYY-MM-DD format
-- [ ] Status values are valid enums
-- [ ] At least one stakeholder exists
-- [ ] At least one task exists
-- [ ] Task dependencies reference existing task IDs
-- [ ] Progress values are 0-100
+- [ ] All required fields present
+- [ ] Dates in YYYY-MM-DD format
+- [ ] Valid status/priority enum values
+- [ ] At least one stakeholder (default: Kevin Zakaria, Developer)
+- [ ] At least one task with valid dependencies
+- [ ] Progress values 0-100
 
-## 5. Commit
+## Step 6: Commit
 
 ```bash
 git add timeline.yaml
@@ -77,42 +109,40 @@ git commit -m "Add timeline.yaml for CSS Software Timeline dashboard"
 git push
 ```
 
-## Field Reference Quick Guide
+---
 
-### Project Status Values
+## Quick Reference
+
+### Project Status
 | Status | When to Use |
 |--------|-------------|
-| `draft` | Just an idea |
-| `planning` | Actively planning |
-| `in_progress` | Work is happening |
+| `draft` | Just an idea, no code yet |
+| `planning` | Designing, no implementation |
+| `in_progress` | Active development |
 | `on_hold` | Paused |
-| `completed` | Done |
-| `cancelled` | Not happening |
+| `completed` | Shipped/Done |
+| `cancelled` | Abandoned |
 
-### Task Status Values
-| Status | When to Use |
-|--------|-------------|
-| `pending` | Not started |
-| `in_progress` | Working on it |
-| `completed` | Done |
-| `blocked` | Can't proceed |
+### Task Status
+| Status | Indicators |
+|--------|------------|
+| `pending` | Folder/file doesn't exist or is empty |
+| `in_progress` | Has code but incomplete, TODOs present |
+| `completed` | Feature works, has tests, no TODOs |
+| `blocked` | Depends on external factor |
 
-### Priority Values
-| Priority | When to Use |
-|----------|-------------|
-| `critical` | Must ship ASAP |
-| `high` | Important |
-| `medium` | Normal |
-| `low` | Can wait |
+### Priority
+| Level | Meaning |
+|-------|---------|
+| `critical` | Blocking other work, must ship ASAP |
+| `high` | Important, prioritize this |
+| `medium` | Normal priority |
+| `low` | Nice to have, can wait |
 
-## Example Prompt for User
+---
 
-If the user just says "create timeline.yaml", ask:
+## Key Principle
 
-> To create your timeline.yaml, I need some information:
-> 1. What's the current status of this project? (planning/in_progress/etc.)
-> 2. When did you start, and when do you expect to finish?
-> 3. How many hours do you estimate for the whole project?
-> 4. How many hours have you already spent?
-> 5. What are the main phases or tasks? For each, what's the status and progress?
-> 6. What's the priority level, and why?
+**You are an intelligent assistant with full codebase access. Act like it.**
+
+Don't ask the user to describe their own code - read it yourself. Only ask for information that genuinely requires human input (priorities, business context, time spent).
