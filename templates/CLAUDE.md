@@ -101,13 +101,34 @@ Check that:
 - [ ] At least one task with valid dependencies
 - [ ] Progress values 0-100
 
-## Step 6: Commit
+## Step 6: Clean Up Templates Folder
+
+**IMPORTANT:** The `templates/` folder is a temporary tool - do NOT commit it to the project repo.
+
+After creating `timeline.yaml`, clean up:
+
+```bash
+# Option A: Delete the templates folder (recommended)
+rm -rf templates/
+
+# Option B: Add to .gitignore if you want to keep it locally
+echo "templates/" >> .gitignore
+```
+
+## Step 7: Commit Only timeline.yaml
 
 ```bash
 git add timeline.yaml
 git commit -m "Add timeline.yaml for CSS Software Timeline dashboard"
 git push
 ```
+
+**What gets committed:**
+- `timeline.yaml` - YES, this is the project's timeline data
+
+**What should NOT be committed:**
+- `templates/` folder - NO, this is just a reference tool
+- `templates/CLAUDE.md` - NO, instructions are only needed during creation
 
 ---
 
