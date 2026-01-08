@@ -391,8 +391,27 @@ backlog:
     dateCompleted: "2026-01-08"
     benchmarkedFrom: ["Linear", "Asana", "Monday"]
 
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Data Refresh Features (Added: 2026-01-08)
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  - id: "fetch-button"
+    name: "Manual Fetch/Refresh Button"
+    description: |
+      Add a button in the UI to manually trigger fetching updated timeline data:
+      - Button in header or dashboard view
+      - Calls the fetch script to pull latest data from all configured repos
+      - Shows loading state during fetch
+      - Displays success/error notification after completion
+      - Updates dashboard without page reload
+    priority: "medium"
+    estimatedHours: 6
+    status: "idea"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+
 metadata:
-  lastUpdated: "2026-01-08T14:35:00Z"
+  lastUpdated: "2026-01-08T21:50:00Z"
   schemaVersion: "1.0.0"
   # changelog:
   #   - "2026-01-08: Completed 5 DetailsTab enhancements (Quick Stats, Health, MiniTimeline, Milestones Preview, Forecast)"
