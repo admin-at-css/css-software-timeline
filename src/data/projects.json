@@ -376,10 +376,10 @@
       "name": "CSS Toolkit",
       "description": "Chrome extension productivity tools for Kledo CRM - PT Cepat Service Station.\nFeatures: Referensi Generator (reference codes), Alamat Pengiriman (shipping addresses),\nGoogle Sheets sync, and Deletion Audit System (document recovery).\n",
       "status": "in_progress",
-      "startDate": "2025-11-09",
+      "startDate": "2025-09-29",
       "endDate": "2026-01-31",
-      "estimatedHours": 160,
-      "actualHours": 130,
+      "estimatedHours": 225,
+      "actualHours": 205,
       "priority": "high",
       "priorityReason": "Active daily use by CSS team, increases productivity, critical for operations, new deletion recovery capability requested by users",
       "stakeholders": [
@@ -402,11 +402,11 @@
       {
         "id": "phase-1-core",
         "name": "Phase 1: Core Extension (v1.0-v2.0)",
-        "description": "Initial extension development:\n- Referensi Generator with auto-increment codes\n- Alamat Pengiriman (shipping address manager)\n- Floating button UI on Kledo pages\n- Content script architecture (Manifest V3)\n- Panel system with drag & drop\n",
-        "startDate": "2025-11-09",
+        "description": "Initial extension development:\n- Referensi Generator with auto-increment codes\n- Alamat Pengiriman (shipping address manager)\n- Floating button UI on Kledo pages\n- Content script architecture (Manifest V3)\n- Panel system with drag & drop\nNote: First commit (Nov 9) had 1,543 LOC - development started pre-git\n",
+        "startDate": "2025-09-29",
         "endDate": "2025-11-09",
-        "estimatedHours": 40,
-        "actualHours": 40,
+        "estimatedHours": 90,
+        "actualHours": 90,
         "status": "completed",
         "progress": 100,
         "dependencies": [],
@@ -429,12 +429,12 @@
       },
       {
         "id": "phase-2-sync",
-        "name": "Phase 2: Google Sheets Sync (v2.1-v2.3)",
-        "description": "Cloud sync and data management:\n- Google Sheets integration with Apps Script backend\n- OAuth 2.0 authentication\n- Automatic background sync\n- Export/Import backup feature\n- Auto-update via GitHub Pages\n- Rebranding to CSS Toolkit\n",
+        "name": "Phase 2: Cloud Sync & Dashboard (v2.1-v2.3)",
+        "description": "Cloud sync and Liquidity Dashboard:\n- Google Sheets integration with Apps Script backend\n- OAuth 2.0 authentication\n- Automatic background sync\n- Export/Import backup feature\n- Auto-update via GitHub Pages\n- Liquidity Dashboard with Kledo API integration (+1,192 LOC)\n- Company login gate and bug report system\n- Rebranding to CSS Toolkit (v2.3.4)\n",
         "startDate": "2025-11-10",
-        "endDate": "2025-11-10",
-        "estimatedHours": 30,
-        "actualHours": 30,
+        "endDate": "2025-11-27",
+        "estimatedHours": 45,
+        "actualHours": 45,
         "status": "completed",
         "progress": 100,
         "dependencies": [
@@ -446,9 +446,9 @@
       {
         "id": "milestone-v2.3",
         "name": "v2.3.4 Released",
-        "description": "Google Sync + CSS Toolkit rebrand shipped to production",
-        "startDate": "2025-11-10",
-        "endDate": "2025-11-10",
+        "description": "Google Sync + Liquidity Dashboard + CSS Toolkit rebrand shipped",
+        "startDate": "2025-11-27",
+        "endDate": "2025-11-27",
         "estimatedHours": 0,
         "status": "completed",
         "progress": 100,
@@ -505,12 +505,14 @@
       }
     ],
     "monthlyAllocation": {
-      "2025-11": 100,
-      "2025-12": 30,
+      "2025-09": 10,
+      "2025-10": 40,
+      "2025-11": 135,
+      "2025-12": 10,
       "2026-01": 30
     },
     "metadata": {
-      "lastUpdated": "2026-01-08T20:00:00Z",
+      "lastUpdated": "2026-01-08T22:00:00Z",
       "schemaVersion": "1.0.0"
     },
     "backlog": [
