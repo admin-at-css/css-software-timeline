@@ -68,6 +68,7 @@ The CSS Software Timeline application is a React-based dashboard for tracking so
 - [x] YAML parser with validation
 - [x] LocalStorage persistence for imported projects
 - [x] Update Timeline button for re-importing YAML
+- [x] **Dogfooding** - Build fetches `timeline.yaml` from this repo itself
 
 ### Styling
 - [x] Tailwind CSS v4 integration
@@ -122,18 +123,15 @@ App States:
 
 ---
 
-## GitHub Actions (Configured, Not Active)
+## Deployment
 
-Two workflows are configured in `.github/workflows/`:
+**Platform:** Vercel (via native GitHub integration)
+**URL:** Configured and live
 
-1. **build-deploy.yml** - Build and deploy to Vercel
-   - Triggers: push to main, manual, scheduled
-   - Requires secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `PROJECT_DATA_TOKEN`
-
-2. **scheduled-rebuild.yml** - Triggers rebuild every 6 hours
-   - Keeps dashboard data fresh
-
-**Status:** Workflows are in place but secrets need to be configured for Vercel deployment.
+The app uses Vercel's native GitHub integration for automatic deployments:
+- Pushes to `main` trigger production deployments
+- Preview deployments generated for pull requests
+- No GitHub Actions required (workflows removed as redundant)
 
 ---
 
@@ -160,14 +158,13 @@ Two workflows are configured in `.github/workflows/`:
 
 - **Repository:** https://github.com/admin-at-css/css-software-timeline
 - **Branch:** main
-- **Commits:** 3 (initial + workflows)
 - **Contributor:** efacsen (Kevin Zakaria)
 
 ---
 
 ## Session Log
 
-### 2026-01-08 (Session 4) - DetailsTab Enhancements
+### 2026-01-08 (Session 4) - DetailsTab Enhancements & Deployment
 - Implemented 5 DetailsTab enhancement features:
   - QuickStatsCards component
   - HealthIndicator with projectHealth.ts utility
@@ -179,6 +176,10 @@ Two workflows are configured in `.github/workflows/`:
 - Updated timeline.yaml with completed features
 - Initialized git repository and pushed to GitHub
 - Repository transferred from efacsen to admin-at-css
+- **Deployed to Vercel** with native GitHub integration
+- Configured dogfooding: build fetches `timeline.yaml` from this repo
+- Removed redundant GitHub Actions workflows (Vercel handles CI/CD)
+- Fixed TypeScript build error (unused variable prefix with underscore)
 
 ### 2024-12-31 (Session 3)
 - Completed Phase 3: Gantt Improvements
@@ -199,7 +200,7 @@ Two workflows are configured in `.github/workflows/`:
 
 ## Next Session Recommendations
 
-1. **Configure Vercel deployment** - Add secrets to GitHub for CI/CD
-2. **Implement Velocity Metrics** - Sprint velocity trends (8h)
-3. **Implement Inline Recent Activity** - Activity feed on DetailsTab (4h)
-4. **Test with real project data** - Import more projects to test scalability
+1. **Implement Velocity Metrics** - Sprint velocity trends (8h)
+2. **Implement Inline Recent Activity** - Activity feed on DetailsTab (4h)
+3. **Add more projects** - Create timeline.yaml files in other repos to track multiple projects
+4. **Phase 4 implementation** - Inline editing, CSV export (see timeline.yaml)
