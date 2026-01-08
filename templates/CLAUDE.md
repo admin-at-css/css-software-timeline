@@ -22,8 +22,20 @@ Before asking anything, gather information from:
    git log --oneline | head -10            # Recent activity
    git log --format="%ad" --date=short | sort | uniq | wc -l  # Days with commits
    ```
-4. **Source code structure** - Identify major features/modules
-5. **Existing documentation** - Any specs, design docs, or notes
+4. **Git branches** - Check for feature branches (worktrees):
+   ```bash
+   git branch -a                           # List all branches (local + remote)
+   git branch --list                       # Local branches only
+   git branch -vv                          # Branches with last commit info
+   ```
+   **Interpreting branches:**
+   - `feature/*` or `feat/*` branches = features in progress
+   - `fix/*` or `bugfix/*` branches = bug fixes being worked on
+   - Branches not merged to main = ongoing work (potential tasks)
+   - Recently active branches = current focus areas
+
+5. **Source code structure** - Identify major features/modules
+6. **Existing documentation** - Any specs, design docs, or notes
 
 ## Step 2: Infer What You Can
 
@@ -37,7 +49,13 @@ From your exploration, determine:
 | `status` | From code completeness: has tests? deployed? README says "WIP"? |
 | `startDate` | First git commit date |
 | `repository.url` | From `git remote -v` |
-| `tasks` | From code structure: setup, core features, UI, tests, etc. |
+| `tasks` | From code structure, feature branches, and modules |
+
+**Identify tasks from multiple sources:**
+- **Code structure**: Major folders/modules = potential phases or features
+- **Feature branches**: Each unmerged `feature/*` branch = task in progress
+- **Merged branches**: Recently merged branches = completed tasks
+- **Git log messages**: Patterns like "Add X", "Implement Y" reveal features
 
 **Estimate hours based on codebase size:**
 - Small project (<1000 LOC): 20-40 hours
