@@ -14,7 +14,7 @@ interface ProjectViewProps {
   existingProjectIds?: string[];
 }
 
-export function ProjectView({ project, onBackToDashboard, onUpdateProject, existingProjectIds = [] }: ProjectViewProps) {
+export function ProjectView({ project, onBackToDashboard, onUpdateProject, existingProjectIds: _existingProjectIds = [] }: ProjectViewProps) {
   const [activeTab, setActiveTab] = useState<ProjectTab>('details');
   const [updateStatus, setUpdateStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [updateError, setUpdateError] = useState<string | null>(null);
