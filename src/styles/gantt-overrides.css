@@ -1,0 +1,222 @@
+/* Frappe Gantt Overrides */
+/* Based on frappe-gantt v1.x documentation */
+
+/* Override frappe-gantt CSS variables - default bar color is white! */
+:root {
+  --g-bar-color: #3b82f6;
+}
+
+/* Container wrapper */
+.gantt-container {
+  min-height: 300px;
+  width: 100%;
+  overflow: auto;
+  border-radius: 8px;
+}
+
+/* SVG element - use .gantt class for all internal SVG elements */
+
+/* Grid styling */
+.gantt .grid-background {
+  fill: #fafafa;
+}
+
+.gantt .grid-header {
+  fill: #f0f0f0;
+}
+
+.gantt .grid-row {
+  fill: white;
+}
+
+.gantt .grid-row:nth-child(even) {
+  fill: #f9f9f9;
+}
+
+/* Row lines (horizontal grid lines) */
+.gantt .row-line {
+  stroke: #e5e7eb;
+}
+
+/* Tick lines (vertical grid lines) */
+.gantt .tick {
+  stroke: #e5e7eb;
+}
+
+/* Today marker line */
+.gantt .today-highlight {
+  fill: rgba(59, 130, 246, 0.1);
+  stroke: #3b82f6;
+  stroke-width: 1;
+}
+
+/* Current date header highlight - make text readable */
+.gantt .current-highlight {
+  fill: #3b82f6;
+}
+
+/* Task bars - default styling */
+.gantt .bar {
+  fill: #3b82f6;
+  stroke-width: 0;
+}
+
+/* Task bar progress indicator */
+.gantt .bar-progress {
+  fill: rgba(0, 0, 0, 0.15);
+}
+
+/* Task bar labels */
+.gantt .bar-label {
+  fill: white;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+/* Dependency arrows */
+.gantt .arrow {
+  stroke: #6b7280;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* Header text */
+.gantt .upper-text {
+  font-size: 13px;
+  font-weight: 600;
+  fill: #374151;
+}
+
+.gantt .lower-text {
+  font-size: 11px;
+  fill: #6b7280;
+}
+
+/* Status-based bar colors using custom_class */
+.gantt .bar-wrapper.status-draft .bar {
+  fill: #94a3b8;
+}
+
+.gantt .bar-wrapper.status-planning .bar {
+  fill: #a78bfa;
+}
+
+.gantt .bar-wrapper.status-in-progress .bar {
+  fill: #fbbf24;
+}
+
+.gantt .bar-wrapper.status-on-hold .bar {
+  fill: #f97316;
+}
+
+.gantt .bar-wrapper.status-completed .bar {
+  fill: #22c55e;
+}
+
+.gantt .bar-wrapper.status-cancelled .bar {
+  fill: #ef4444;
+}
+
+/* Task status colors - use !important to override inline styles if needed */
+.gantt .bar-wrapper.task-pending .bar {
+  fill: #94a3b8 !important;
+}
+
+.gantt .bar-wrapper.task-in-progress .bar {
+  fill: #3b82f6 !important;
+}
+
+.gantt .bar-wrapper.task-completed .bar {
+  fill: #22c55e !important;
+}
+
+.gantt .bar-wrapper.task-blocked .bar {
+  fill: #ef4444 !important;
+}
+
+/* Milestone styling - render as small purple bar with diamond appearance */
+.gantt .bar-wrapper.milestone .bar {
+  fill: #a855f7 !important;
+  /* Make it look like a small marker */
+  height: 16px !important;
+  y: calc(50% - 8px);
+}
+
+/* Hide progress bar for milestones (they're 0% or 100%) */
+.gantt .bar-wrapper.milestone .bar-progress {
+  display: none;
+}
+
+/* Style milestone label - purple text outside the bar */
+.gantt .bar-wrapper.milestone .bar-label {
+  fill: #7c3aed !important;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+/* Make milestone bar wrapper more prominent */
+.gantt .bar-wrapper.milestone {
+  opacity: 1;
+}
+
+/* Priority styling with custom_class */
+.gantt .bar-wrapper.priority-high .bar {
+  stroke: #c0392b;
+  stroke-width: 2px;
+}
+
+.gantt .bar-wrapper.priority-medium .bar {
+  stroke: #e67e22;
+  stroke-width: 2px;
+}
+
+.gantt .bar-wrapper.priority-low .bar {
+  stroke: #27ae60;
+  stroke-width: 2px;
+}
+
+/* Popup styling */
+.gantt .popup-wrapper {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+}
+
+.gantt .popup-wrapper .title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.gantt .popup-wrapper .subtitle {
+  color: #666;
+  font-size: 13px;
+}
+
+/* Custom popup content */
+.gantt-popup {
+  padding: 12px;
+  min-width: 200px;
+}
+
+/* Scrollbar styling */
+.gantt-container::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.gantt-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.gantt-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.gantt-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

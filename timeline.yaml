@@ -1,0 +1,402 @@
+# timeline.yaml - CSS Software Timeline
+# This project tracks itself (dogfooding!)
+# Schema Version: 1.0.0
+#
+# UPDATED: 2025-12-31 - Corrected timeline dates and industry-standard hour estimates
+
+project:
+  id: "css-software-timeline"
+  name: "CSS Software Timeline"
+  description: "React-based dashboard for tracking software projects within the CSS team. Features Gantt charts, project cards, filtering, and multi-view dashboard."
+  status: "in_progress"
+  startDate: "2025-12-05"
+  endDate: "2026-01-31"
+  estimatedHours: 112
+  actualHours: 78  # Updated 2026-01-08: +10h for DetailsTab enhancements
+  priority: "high"
+  priorityReason: "Internal tool needed to track all CSS team projects and improve visibility"
+  stakeholders:
+    - name: "Kevin Zakaria"
+      role: "Developer & Product Owner"
+    - name: "CSS Team"
+      role: "End Users"
+  repository:
+    url: "https://github.com/admin-at-css/css-software-timeline"
+    branch: "main"
+  color: "#3b82f6"
+
+tasks:
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 1: Foundation & MVP (Dec 6 - Dec 15)
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-1-foundation"
+    name: "Phase 1: Foundation & MVP"
+    description: |
+      Initial project setup and core functionality:
+      - React 19 + Vite 7 + TypeScript + Tailwind CSS v4 setup
+      - Core components: GanttChart, FilterBar, ProjectList, ProjectCard
+      - Dashboard architecture: DashboardView, SummaryStats, ViewToggle
+      - Project view with tabs: Details, Gantt, Tasks, Activity
+      - frappe-gantt integration and CSS conflict resolution
+    startDate: "2025-12-06"
+    endDate: "2025-12-15"
+    estimatedHours: 32
+    actualHours: 32
+    status: "completed"
+    progress: 100
+    dependencies: []
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+  - id: "milestone-mvp"
+    name: "MVP Complete"
+    description: "Functional dashboard with Gantt charts, filtering, and project views"
+    startDate: "2025-12-15"
+    endDate: "2025-12-15"
+    estimatedHours: 0
+    actualHours: 0
+    status: "completed"
+    progress: 100
+    dependencies: ["phase-1-foundation"]
+    type: "milestone"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 2: Data Architecture (Dec 16 - Dec 20)
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-2-data"
+    name: "Phase 2: Data Architecture"
+    description: |
+      YAML-based project data management:
+      - YAML schema design with comprehensive documentation
+      - Import modal with drag & drop file upload
+      - Parser integration with validation & error handling
+      - TypeScript types for Project, Task, Stakeholder entities
+    startDate: "2025-12-16"
+    endDate: "2025-12-20"
+    estimatedHours: 12
+    actualHours: 12
+    status: "completed"
+    progress: 100
+    dependencies: ["milestone-mvp"]
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+  - id: "milestone-yaml"
+    name: "YAML Data Source Complete"
+    description: "Full YAML import workflow with validation"
+    startDate: "2025-12-20"
+    endDate: "2025-12-20"
+    estimatedHours: 0
+    actualHours: 0
+    status: "completed"
+    progress: 100
+    dependencies: ["phase-2-data"]
+    type: "milestone"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 2.5: UX Enhancements (Dec 21 - Dec 23)
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-2-5-ux"
+    name: "Phase 2.5: UX Enhancements"
+    description: |
+      User experience improvements:
+      - Enhanced Gantt popup with rich metadata display
+      - LocalStorage persistence for imported projects
+      - Update existing projects confirmation dialog
+      - CLAUDE.md documentation and workflow instructions
+    startDate: "2025-12-21"
+    endDate: "2025-12-23"
+    estimatedHours: 8
+    actualHours: 8
+    status: "completed"
+    progress: 100
+    dependencies: ["milestone-yaml"]
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+  - id: "milestone-enhanced"
+    name: "Enhanced Import Complete"
+    description: "Full import workflow with persistence, updates, and documentation"
+    startDate: "2025-12-23"
+    endDate: "2025-12-23"
+    estimatedHours: 0
+    actualHours: 0
+    status: "completed"
+    progress: 100
+    dependencies: ["phase-2-5-ux"]
+    type: "milestone"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 3: Gantt Improvements (Dec 24 - Dec 31)
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-3-gantt"
+    name: "Phase 3: Gantt Improvements"
+    description: |
+      Gantt chart UX overhaul:
+      - Replace floating popup with right-side TaskDetailsPanel
+      - Slide-in panel animation (300ms transition)
+      - 70:30 layout ratio for panel content
+      - Subtasks parsing with status-aware icons
+      - ProjectSummaryFooter with metrics and upcoming milestones
+      - Remove redundant project name prefix from task labels
+      - InlineLegend component in header
+    startDate: "2025-12-24"
+    endDate: "2025-12-31"
+    estimatedHours: 16
+    actualHours: 16
+    status: "completed"
+    progress: 100
+    dependencies: ["milestone-enhanced"]
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+  - id: "milestone-gantt-ux"
+    name: "Gantt UX Complete"
+    description: "Professional-grade Gantt interface with side panel and summary footer"
+    startDate: "2025-12-31"
+    endDate: "2025-12-31"
+    estimatedHours: 0
+    actualHours: 0
+    status: "completed"
+    progress: 100
+    dependencies: ["phase-3-gantt"]
+    type: "milestone"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 4: Version Control & Polish (Jan 2 - Jan 15)
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-4-polish"
+    name: "Phase 4: Version Control & Polish"
+    description: |
+      Production readiness:
+      - Git repository initialization and commit history
+      - Inline editing of project metadata
+      - Inline editing of task data (status, progress, hours)
+      - Export improvements (better PDF formatting)
+      - CSV export functionality
+    startDate: "2026-01-02"
+    endDate: "2026-01-15"
+    estimatedHours: 28
+    status: "pending"
+    progress: 0
+    dependencies: ["milestone-gantt-ux"]
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+  - id: "milestone-v1"
+    name: "v1.0 Release"
+    description: "First stable release with full CRUD and export functionality"
+    startDate: "2026-01-15"
+    endDate: "2026-01-15"
+    estimatedHours: 0
+    status: "pending"
+    progress: 0
+    dependencies: ["phase-4-polish"]
+    type: "milestone"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 5: Future Enhancements (Jan 16 - Jan 31)
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-5-future"
+    name: "Phase 5: Future Enhancements"
+    description: |
+      Nice-to-have features:
+      - File watcher for auto-detecting timeline.yaml changes
+      - Dark mode support with theme toggle
+      - Keyboard shortcuts for common actions
+    startDate: "2026-01-16"
+    endDate: "2026-01-31"
+    estimatedHours: 16
+    status: "pending"
+    progress: 0
+    dependencies: ["milestone-v1"]
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+monthlyAllocation:
+  "2025-12": 68
+  "2026-01": 44
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BACKLOG - Future ideas not yet scheduled into phases
+# ═══════════════════════════════════════════════════════════════════════════════
+backlog:
+  - id: "visual-timeline-panel"
+    name: "Visual Timeline Context Panel"
+    description: |
+      Show mini project timeline in the task details panel, highlighting
+      where the selected task fits in the overall project context.
+    priority: "medium"
+    estimatedHours: 8
+    status: "approved"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2025-12-30"
+
+  - id: "drag-drop-gantt"
+    name: "Drag & Drop Task Rescheduling"
+    description: "Allow users to drag task bars on the Gantt chart to reschedule"
+    priority: "low"
+    estimatedHours: 16
+    status: "idea"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2025-12-30"
+
+  - id: "multi-assignee"
+    name: "Multiple Assignees per Task"
+    description: "Support assigning multiple people to a single task"
+    priority: "low"
+    estimatedHours: 6
+    status: "idea"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2025-12-30"
+
+  - id: "notifications"
+    name: "Due Date Notifications"
+    description: "Browser notifications for upcoming deadlines and overdue tasks"
+    priority: "low"
+    estimatedHours: 8
+    status: "idea"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2025-12-30"
+
+  - id: "github-integration"
+    name: "GitHub Issues Integration"
+    description: "Sync tasks with GitHub issues for two-way updates"
+    priority: "medium"
+    estimatedHours: 24
+    status: "idea"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2025-12-31"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Details Tab Enhancements (Added: 2026-01-08 - Market research benchmarking)
+  # Benchmarked against: Monday, Asana, ClickUp, Linear, Notion
+  # ─────────────────────────────────────────────────────────────────────────────
+
+  - id: "quick-stats-cards"
+    name: "Quick Stats Cards"
+    description: |
+      Add summary stat cards at top of DetailsTab showing:
+      - Total tasks count
+      - Completed tasks (with percentage)
+      - In Progress tasks (with percentage)
+      - Blocked/Pending tasks (with percentage)
+      Visual cards with icons, similar to Monday.com and ClickUp dashboards.
+    priority: "high"
+    estimatedHours: 4
+    actualHours: 2
+    status: "completed"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+    dateCompleted: "2026-01-08"
+    benchmarkedFrom: ["Monday", "ClickUp", "Asana", "Linear"]
+
+  - id: "project-health-indicator"
+    name: "Project Health Indicator"
+    description: |
+      Auto-calculated health status displayed as badge:
+      - 🟢 On Track: schedule variance < 10%, budget variance < 10%
+      - 🟡 At Risk: schedule or budget variance 10-25%
+      - 🔴 Off Track: schedule or budget variance > 25%
+      Calculate based on: (actual progress vs expected progress) and (actual hours vs estimated hours).
+    priority: "high"
+    estimatedHours: 6
+    actualHours: 2
+    status: "completed"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+    dateCompleted: "2026-01-08"
+    benchmarkedFrom: ["Monday", "ClickUp", "Linear"]
+
+  - id: "mini-timeline-visualization"
+    name: "Mini Timeline with 'You Are Here'"
+    description: |
+      Compact horizontal timeline bar showing:
+      - Project start to end range
+      - Current date marker ("You are here") with floating date label
+      - Milestone markers (purple diamonds)
+      - Day X of Y indicator (e.g., "Day 34 of 57")
+      Similar to Linear's project progress visualization.
+    priority: "high"
+    estimatedHours: 6
+    actualHours: 3
+    status: "completed"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+    dateCompleted: "2026-01-08"
+    benchmarkedFrom: ["Linear", "Asana"]
+
+  - id: "velocity-metrics"
+    name: "Velocity & Burn Rate Metrics"
+    description: |
+      Calculate and display project velocity:
+      - Hours burned per week (average)
+      - Tasks completed per week
+      - Projected completion date based on current velocity
+      - Budget forecast (on budget / over budget / under budget)
+    priority: "medium"
+    estimatedHours: 8
+    status: "approved"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+    benchmarkedFrom: ["ClickUp", "Monday", "Asana"]
+
+  - id: "completion-forecast"
+    name: "Completion Forecast"
+    description: |
+      Predictive completion date based on velocity:
+      - "At current pace, project will finish: [date]"
+      - Risk indicator if forecast exceeds deadline
+      - Days ahead/behind schedule indicator
+      - Velocity (hours/day), remaining hours, progress metrics
+      - Confidence indicator (high/medium/low)
+    priority: "medium"
+    estimatedHours: 4
+    actualHours: 2
+    status: "completed"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+    dateCompleted: "2026-01-08"
+    benchmarkedFrom: ["Monday", "ClickUp"]
+
+  - id: "inline-recent-activity"
+    name: "Inline Recent Activity Feed"
+    description: |
+      Show last 3-5 activities directly on DetailsTab (not separate tab):
+      - Task completions with dates
+      - Milestone achievements
+      - Status changes
+      Compact format, expandable to full Activity tab.
+    priority: "medium"
+    estimatedHours: 4
+    status: "approved"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+    benchmarkedFrom: ["Linear", "Asana", "Notion"]
+
+  - id: "upcoming-milestones-preview"
+    name: "Upcoming Milestones Preview"
+    description: |
+      Show next 2-3 upcoming milestones on DetailsTab:
+      - Milestone name and target date
+      - Days until milestone (with countdown: "Tomorrow", "3 days", "~2 weeks")
+      - Dependency status (ready / blocked) with "Waiting on: [tasks]" indicator
+      - Color-coded urgency (red overdue, amber ≤7 days, gray normal)
+    priority: "medium"
+    estimatedHours: 3
+    actualHours: 1
+    status: "completed"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+    dateCompleted: "2026-01-08"
+    benchmarkedFrom: ["Linear", "Asana", "Monday"]
+
+metadata:
+  lastUpdated: "2026-01-08T14:35:00Z"
+  schemaVersion: "1.0.0"
+  # changelog:
+  #   - "2026-01-08: Completed 5 DetailsTab enhancements (Quick Stats, Health, MiniTimeline, Milestones Preview, Forecast)"
+  #   - "2026-01-08: Added 7 DetailsTab enhancement backlog items from market research"
+  #   - "2025-12-31: Updated timeline with correct dates (Dec 5 start) and industry-standard hours"
+  #   - "2025-12-31: Phase 3 completed - Gantt UX improvements"
+  #   - "2025-12-30: Restructured into 5 phases + milestones"

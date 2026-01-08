@@ -1,0 +1,225 @@
+[
+  {
+    "project": {
+      "id": "project-management-app",
+      "name": "Project Management App",
+      "description": "Internal project management tool for CSS team",
+      "status": "in_progress",
+      "startDate": "2024-12-01",
+      "endDate": "2025-03-15",
+      "estimatedHours": 240,
+      "actualHours": 85,
+      "priority": "high",
+      "priorityReason": "Needed for Q1 2025 team expansion",
+      "stakeholders": [
+        {
+          "name": "Kevin Zakaria",
+          "role": "Product Owner"
+        },
+        {
+          "name": "CSS Team",
+          "role": "End Users"
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/admin-at-css/project-management-app",
+        "branch": "main"
+      },
+      "color": "#3498db"
+    },
+    "tasks": [
+      {
+        "id": "planning",
+        "name": "Requirements & Planning",
+        "startDate": "2024-12-01",
+        "endDate": "2024-12-15",
+        "estimatedHours": 20,
+        "actualHours": 18,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": []
+      },
+      {
+        "id": "design",
+        "name": "UI/UX Design",
+        "startDate": "2024-12-10",
+        "endDate": "2024-12-31",
+        "estimatedHours": 40,
+        "actualHours": 35,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": [
+          "planning"
+        ]
+      },
+      {
+        "id": "backend-api",
+        "name": "Backend API Development",
+        "startDate": "2025-01-01",
+        "endDate": "2025-02-15",
+        "estimatedHours": 80,
+        "status": "in_progress",
+        "progress": 45,
+        "dependencies": [
+          "design"
+        ]
+      },
+      {
+        "id": "frontend",
+        "name": "Frontend Development",
+        "startDate": "2025-01-15",
+        "endDate": "2025-03-01",
+        "estimatedHours": 80,
+        "status": "in_progress",
+        "progress": 20,
+        "dependencies": [
+          "design",
+          "backend-api"
+        ]
+      }
+    ],
+    "monthlyAllocation": {
+      "2024-12": 40,
+      "2025-01": 60,
+      "2025-02": 80,
+      "2025-03": 60
+    }
+  },
+  {
+    "project": {
+      "id": "pakeaja-design-docs",
+      "name": "Pakeaja Design Docs",
+      "description": "Design documentation for Pakeaja platform",
+      "status": "planning",
+      "startDate": "2025-01-15",
+      "endDate": "2025-02-28",
+      "estimatedHours": 80,
+      "actualHours": 0,
+      "priority": "medium",
+      "priorityReason": "Foundation for Q2 development",
+      "stakeholders": [
+        {
+          "name": "Kevin Zakaria",
+          "role": "Lead Designer"
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/admin-at-css/pakeaja-design-docs",
+        "branch": "main"
+      },
+      "color": "#9b59b6"
+    },
+    "tasks": [
+      {
+        "id": "research",
+        "name": "User Research",
+        "startDate": "2025-01-15",
+        "endDate": "2025-01-31",
+        "estimatedHours": 30,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": []
+      },
+      {
+        "id": "wireframes",
+        "name": "Wireframe Design",
+        "startDate": "2025-02-01",
+        "endDate": "2025-02-15",
+        "estimatedHours": 30,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": [
+          "research"
+        ]
+      },
+      {
+        "id": "documentation",
+        "name": "Final Documentation",
+        "startDate": "2025-02-15",
+        "endDate": "2025-02-28",
+        "estimatedHours": 20,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": [
+          "wireframes"
+        ]
+      }
+    ],
+    "monthlyAllocation": {
+      "2025-01": 30,
+      "2025-02": 50
+    }
+  },
+  {
+    "project": {
+      "id": "css-chrome-extension",
+      "name": "CSS Chrome Extension",
+      "description": "Browser extension for CSS team productivity",
+      "status": "in_progress",
+      "startDate": "2024-11-15",
+      "endDate": "2025-01-31",
+      "estimatedHours": 120,
+      "actualHours": 70,
+      "priority": "high",
+      "priorityReason": "Immediate productivity boost needed",
+      "stakeholders": [
+        {
+          "name": "Kevin Zakaria",
+          "role": "Developer"
+        },
+        {
+          "name": "Sales Team",
+          "role": "End Users"
+        }
+      ],
+      "repository": {
+        "url": "https://github.com/efacsen/css-chrome-extension",
+        "branch": "main"
+      },
+      "color": "#e74c3c"
+    },
+    "tasks": [
+      {
+        "id": "manifest",
+        "name": "Extension Setup",
+        "startDate": "2024-11-15",
+        "endDate": "2024-11-30",
+        "estimatedHours": 20,
+        "actualHours": 18,
+        "status": "completed",
+        "progress": 100,
+        "dependencies": []
+      },
+      {
+        "id": "core-features",
+        "name": "Core Features",
+        "startDate": "2024-12-01",
+        "endDate": "2025-01-15",
+        "estimatedHours": 60,
+        "actualHours": 52,
+        "status": "in_progress",
+        "progress": 80,
+        "dependencies": [
+          "manifest"
+        ]
+      },
+      {
+        "id": "polish",
+        "name": "Polish & Testing",
+        "startDate": "2025-01-15",
+        "endDate": "2025-01-31",
+        "estimatedHours": 40,
+        "status": "pending",
+        "progress": 0,
+        "dependencies": [
+          "core-features"
+        ]
+      }
+    ],
+    "monthlyAllocation": {
+      "2024-11": 20,
+      "2024-12": 40,
+      "2025-01": 60
+    }
+  }
+]
