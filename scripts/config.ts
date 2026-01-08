@@ -6,36 +6,20 @@ export interface RepoConfig {
 }
 
 export const REPOS: RepoConfig[] = [
+  // This repo (dogfooding - tracking itself)
   {
     owner: 'admin-at-css',
-    repo: 'project-management-app',
+    repo: 'css-software-timeline',
     branch: 'main',
     isPrivate: false,
   },
-  {
-    owner: 'admin-at-css',
-    repo: 'pakeaja-design-docs',
-    branch: 'main',
-    isPrivate: false,
-  },
-  {
-    owner: 'admin-at-css',
-    repo: 'css-sales-report-project-brief',
-    branch: 'main',
-    isPrivate: false,
-  },
-  {
-    owner: 'efacsen',
-    repo: 'css-chrome-extension',
-    branch: 'main',
-    isPrivate: true,
-  },
-  {
-    owner: 'efacsen',
-    repo: 'hitung-cat',
-    branch: 'main',
-    isPrivate: true,
-  },
+  // Future repos can be added here as they adopt timeline.yaml
+  // {
+  //   owner: 'admin-at-css',
+  //   repo: 'project-management-app',
+  //   branch: 'main',
+  //   isPrivate: false,
+  // },
 ];
 
-export const YAML_FILENAME = 'project-timeline.yaml';
+export const YAML_FILENAME = 'timeline.yaml';
