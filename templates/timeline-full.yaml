@@ -1,0 +1,170 @@
+# timeline.yaml - Full Template
+# Use this for projects in active development with detailed tracking
+# Copy this file to your project root as "timeline.yaml"
+#
+# Required fields are marked with (required)
+# All dates use YYYY-MM-DD format
+
+project:
+  # Unique identifier - lowercase, use dashes (required)
+  id: "your-project-id"
+
+  # Human-readable project name (required)
+  name: "Your Project Name"
+
+  # Detailed description of the project (required)
+  description: "What problem does this solve? Who is it for?"
+
+  # Current project status (required)
+  # Options: draft | planning | in_progress | on_hold | completed | cancelled
+  status: "in_progress"
+
+  # Project timeline (required)
+  startDate: "2025-01-01"
+  endDate: "2025-03-31"
+
+  # Hours tracking (required)
+  estimatedHours: 120
+  actualHours: 45             # Update as you work
+
+  # Priority for stakeholder visibility (required)
+  # Options: critical | high | medium | low
+  priority: "high"
+
+  # Why this priority was assigned (recommended)
+  priorityReason: "Business justification for stakeholders"
+
+  # Who is involved (required, at least 1)
+  stakeholders:
+    - name: "Kevin Zakaria"
+      role: "Developer"
+    - name: "CSS Team"
+      role: "End Users"
+
+  # GitHub repository (required)
+  repository:
+    url: "https://github.com/admin-at-css/your-repo"
+    branch: "main"
+
+  # Color for dashboard display (optional)
+  # Use hex color codes
+  color: "#3b82f6"
+
+# Project tasks - shown on Gantt chart
+tasks:
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 1
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-1"
+    name: "Phase 1: Foundation"
+    description: |
+      What this phase includes:
+      - Setup and configuration
+      - Initial implementation
+      - Core functionality
+    startDate: "2025-01-01"
+    endDate: "2025-01-15"
+    estimatedHours: 40
+    actualHours: 38           # Update when complete
+    status: "completed"       # pending | in_progress | completed | blocked
+    progress: 100             # 0-100 percentage
+    dependencies: []          # No dependencies for first task
+    assignee: "Kevin Zakaria"
+    type: "task"              # task | milestone
+
+  # Milestone after Phase 1
+  - id: "milestone-phase-1"
+    name: "Phase 1 Complete"
+    description: "Foundation is ready for next phase"
+    startDate: "2025-01-15"
+    endDate: "2025-01-15"
+    estimatedHours: 0         # Milestones have 0 hours
+    status: "completed"
+    progress: 100
+    dependencies: ["phase-1"]
+    type: "milestone"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 2
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-2"
+    name: "Phase 2: Features"
+    description: |
+      What this phase includes:
+      - Feature A implementation
+      - Feature B implementation
+      - Integration work
+    startDate: "2025-01-16"
+    endDate: "2025-02-15"
+    estimatedHours: 60
+    status: "in_progress"
+    progress: 30
+    dependencies: ["milestone-phase-1"]
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+  - id: "milestone-phase-2"
+    name: "Phase 2 Complete"
+    startDate: "2025-02-15"
+    endDate: "2025-02-15"
+    estimatedHours: 0
+    status: "pending"
+    progress: 0
+    dependencies: ["phase-2"]
+    type: "milestone"
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # PHASE 3
+  # ═══════════════════════════════════════════════════════════════════════════
+  - id: "phase-3"
+    name: "Phase 3: Polish & Release"
+    description: |
+      What this phase includes:
+      - Testing and bug fixes
+      - Documentation
+      - Deployment
+    startDate: "2025-02-16"
+    endDate: "2025-03-31"
+    estimatedHours: 20
+    status: "pending"
+    progress: 0
+    dependencies: ["milestone-phase-2"]
+    assignee: "Kevin Zakaria"
+    type: "task"
+
+  - id: "milestone-release"
+    name: "v1.0 Release"
+    description: "First stable release"
+    startDate: "2025-03-31"
+    endDate: "2025-03-31"
+    estimatedHours: 0
+    status: "pending"
+    progress: 0
+    dependencies: ["phase-3"]
+    type: "milestone"
+
+# Monthly hour allocation (optional but recommended)
+# Helps with capacity planning
+monthlyAllocation:
+  "2025-01": 60
+  "2025-02": 40
+  "2025-03": 20
+
+# Track when this file was last updated
+metadata:
+  lastUpdated: "2025-01-08T00:00:00Z"
+  schemaVersion: "1.0.0"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BACKLOG (optional)
+# Ideas and future work not yet scheduled
+# ═══════════════════════════════════════════════════════════════════════════════
+backlog:
+  - id: "future-feature-1"
+    name: "Future Feature Name"
+    description: "What this would do"
+    priority: "low"
+    estimatedHours: 16
+    status: "idea"            # idea | approved | deferred
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2025-01-08"

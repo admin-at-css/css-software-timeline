@@ -13,13 +13,15 @@ export const REPOS: RepoConfig[] = [
     branch: 'main',
     isPrivate: false,
   },
-  // Future repos can be added here as they adopt timeline.yaml
-  // {
-  //   owner: 'admin-at-css',
-  //   repo: 'project-management-app',
-  //   branch: 'main',
-  //   isPrivate: false,
-  // },
+  // CSS Chrome Extension - browser extension for CSS team productivity
+  // Note: Needs timeline.yaml to be added to this repo
+  {
+    owner: 'efacsen',
+    repo: 'css-chrome-extension',
+    branch: 'main',
+    isPrivate: true,
+  },
+  // Add more repos here as they adopt timeline.yaml
 ];
 
 export const YAML_FILENAME = 'timeline.yaml';

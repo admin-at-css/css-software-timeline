@@ -1,0 +1,59 @@
+# timeline.yaml - Minimal Template
+# Use this for early-stage projects, ideas, or projects in planning phase
+# Copy this file to your project root as "timeline.yaml"
+#
+# Required fields are marked with (required)
+# All dates use YYYY-MM-DD format
+
+project:
+  # Unique identifier - lowercase, use dashes (required)
+  id: "your-project-id"
+
+  # Human-readable project name (required)
+  name: "Your Project Name"
+
+  # Brief description of what this project solves (required)
+  description: "One-line description of the project"
+
+  # Current project status (required)
+  # Options: draft | planning | in_progress | on_hold | completed | cancelled
+  status: "planning"
+
+  # When work begins or began (required)
+  startDate: "2025-01-08"
+
+  # Project priority level (required)
+  # Options: critical | high | medium | low
+  priority: "medium"
+
+  # Why this priority was assigned (recommended)
+  priorityReason: "Brief justification for stakeholders"
+
+  # Total estimated hours for the project (required)
+  # Set to 0 if unknown, update as you learn more
+  estimatedHours: 0
+
+  # Who is involved (required, at least 1)
+  stakeholders:
+    - name: "Kevin Zakaria"
+      role: "Developer"
+
+  # GitHub repository (required)
+  repository:
+    url: "https://github.com/admin-at-css/your-repo"
+
+# At minimum, include one task to show on Gantt chart
+tasks:
+  - id: "discovery"
+    name: "Discovery & Planning"
+    startDate: "2025-01-08"
+    endDate: "2025-01-22"
+    estimatedHours: 8
+    status: "pending"          # pending | in_progress | completed | blocked
+    progress: 0                # 0-100 percentage
+    dependencies: []           # Empty array if no dependencies
+
+# Track when this file was last updated
+metadata:
+  lastUpdated: "2025-01-08T00:00:00Z"
+  schemaVersion: "1.0.0"
