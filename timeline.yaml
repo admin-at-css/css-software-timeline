@@ -410,8 +410,24 @@ backlog:
     requestedBy: "Kevin Zakaria"
     dateAdded: "2026-01-08"
 
+  - id: "mobile-responsive"
+    name: "Mobile-Friendly Responsive Layout"
+    description: |
+      Make the dashboard fully responsive for mobile/tablet viewing:
+      - Responsive sidebar (collapsible on mobile)
+      - Touch-friendly project cards and navigation
+      - Gantt chart horizontal scroll on small screens
+      - Stacked layout for DetailsTab cards
+      - Mobile-optimized header with hamburger menu
+      - Proper touch targets (min 44px)
+    priority: "high"
+    estimatedHours: 12
+    status: "idea"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+
 metadata:
-  lastUpdated: "2026-01-08T21:50:00Z"
+  lastUpdated: "2026-01-08T21:55:00Z"
   schemaVersion: "1.0.0"
   # changelog:
   #   - "2026-01-08: Completed 5 DetailsTab enhancements (Quick Stats, Health, MiniTimeline, Milestones Preview, Forecast)"
