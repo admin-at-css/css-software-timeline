@@ -426,8 +426,24 @@ backlog:
     requestedBy: "Kevin Zakaria"
     dateAdded: "2026-01-08"
 
+  - id: "backlog-view"
+    name: "Backlog View Tab"
+    description: |
+      Add a Backlog tab in ProjectView to display backlog items:
+      - List of backlog items grouped by priority (critical → low)
+      - Show: name, description, estimated hours, status badge
+      - Filter by status (idea/approved/rejected)
+      - Sort options (priority, date added, estimated hours)
+      - Expandable cards for full description
+      - Visual indicators for approved vs idea items
+    priority: "medium"
+    estimatedHours: 6
+    status: "idea"
+    requestedBy: "Kevin Zakaria"
+    dateAdded: "2026-01-08"
+
 metadata:
-  lastUpdated: "2026-01-08T21:55:00Z"
+  lastUpdated: "2026-01-08T22:00:00Z"
   schemaVersion: "1.0.0"
   # changelog:
   #   - "2026-01-08: Completed 5 DetailsTab enhancements (Quick Stats, Health, MiniTimeline, Milestones Preview, Forecast)"
